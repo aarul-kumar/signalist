@@ -2,12 +2,14 @@
 
 > A real-time, AI-powered stock tracking system designed for automation, speed, and actionable insights.
 
+---
 
 ## Overview
 
 Signalist is a modern stock monitoring platform that goes beyond basic tracking.  
 It continuously analyzes market activity and delivers context-aware alerts and AI-driven summaries to help users make smarter decisions.
 
+---
 
 ## Key Highlights
 
@@ -16,11 +18,13 @@ It continuously analyzes market activity and delivers context-aware alerts and A
 - Smart alerts with meaningful triggers  
 - Scalable and modular code structure  
 
+---
 
 ## System Architecture
 
-<img width="456" height="737" alt="Blank diagram" src="https://github.com/user-attachments/assets/fb33a0e6-3ffc-49aa-9565-d53671da385a" />
+![System Architecture](https://github.com/user-attachments/assets/fb33a0e6-3ffc-49aa-9565-d53671da385a)
 
+---
 
 ## Tech Ecosystem
 
@@ -36,6 +40,7 @@ It continuously analyzes market activity and delivers context-aware alerts and A
 | Email Service    | Nodemailer |
 | Language         | TypeScript |
 
+---
 
 ## Features
 
@@ -64,61 +69,177 @@ It continuously analyzes market activity and delivers context-aware alerts and A
 - Customize alerts  
 - Manage preferences  
 
+---
+
+## Architecture & Implementation Details
+
+### Architecture Pattern
+
+The application follows a hybrid full-stack architecture using Next.js:
+
+- Server Components for efficient data fetching and rendering  
+- Client Components for interactive UI  
+- Server Actions to handle backend logic securely  
+
+This reduces API overhead and improves performance.
+
+---
+
+### Event-Driven Workflow (Inngest)
+
+The system uses an event-driven model instead of polling:
+
+- Stock updates trigger background workflows  
+- Alerts are processed asynchronously  
+- Built-in retry and failure handling  
+
+Benefits:
+- Low latency  
+- Better scalability  
+- Efficient resource usage  
+
+---
+
+### Data Flow
+
+1. User interacts with UI (search, watchlist, alerts)  
+2. Requests handled via Server Actions or API routes  
+3. Data fetched from Finnhub API  
+4. Stored in MongoDB  
+5. Events triggered via Inngest  
+6. AI summaries generated using Gemini  
+7. Notifications sent via Nodemailer  
+
+---
+
+### Database Design (MongoDB)
+
+Document-based schema:
+
+- users → authentication and preferences  
+- watchlists → tracked stocks  
+- alerts → trigger conditions  
+- stocks → cached data  
+- notifications → alert history  
+
+Design considerations:
+- Indexed queries for performance  
+- Flexible schema for scalability  
+- Separation of concerns  
+
+---
+
+### Authentication & Security
+
+- Implemented using Better Auth  
+- Secure session handling  
+- Protected server-side operations  
+- Environment-based configuration  
+
+---
+
+### AI Integration (Gemini API)
+
+AI enhances financial data:
+
+- Generates summaries  
+- Analyzes earnings  
+- Provides sentiment insights  
+
+Pipeline:  
+Raw data → AI processing → structured insights → UI  
+
+---
+
+### Performance Optimizations
+
+- Server-side rendering (SSR)  
+- Optimized data fetching  
+- API response caching  
+- Efficient database queries  
+- Lazy loading  
+
+---
+
+### Error Handling & Reliability
+
+- Centralized error handling  
+- Retry mechanisms in workflows  
+- Graceful UI fallbacks  
+- Logging for debugging  
+
+---
+
+### Scalability Considerations
+
+- Stateless backend design  
+- Event-driven processing  
+- Modular architecture  
+- Decoupled services  
+
+---
+
+### Code Quality & Maintainability
+
+- TypeScript for type safety  
+- Reusable components  
+- Separation of concerns  
+- Clean project structure  
+
+---
 
 ## Getting Started
 
 ### 1. Clone Repository
 
-git clone https://github.com/your-username/signalist.git  
-cd signalist  
+    git clone https://github.com/your-username/signalist.git
+    cd signalist
 
 ### 2. Install Dependencies
 
-npm install  
+    npm install
 
 ### 3. Setup Environment Variables
 
 Create a `.env` file in the root directory:
 
-NODE_ENV=development  
-NEXT_PUBLIC_BASE_URL=http://localhost:3000  
+    NODE_ENV=development
+    NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
+    # APIs
+    NEXT_PUBLIC_FINNHUB_API_KEY=
+    GEMINI_API_KEY=
 
-### APIs  
-NEXT_PUBLIC_FINNHUB_API_KEY=  
-GEMINI_API_KEY=  
+    # Database
+    MONGODB_URI=
 
+    # Auth
+    BETTER_AUTH_SECRET=
+    BETTER_AUTH_URL=http://localhost:3000
 
-### Database  
-MONGODB_URI=  
-
-
-### Auth  
-BETTER_AUTH_SECRET=  
-BETTER_AUTH_URL=http://localhost:3000  
-
-
-### Email  
-NODEMAILER_EMAIL=  
-NODEMAILER_PASSWORD=  
+    # Email
+    NODEMAILER_EMAIL=
+    NODEMAILER_PASSWORD=
 
 ### 4. Run the Application
 
-npm run dev  
-npx inngest-cli@latest dev  
+    npm run dev
+    npx inngest-cli@latest dev
 
 Open: http://localhost:3000  
 
+---
 
 ## Project Structure
 
-app/          → Routes & UI  
-components/   → Reusable UI components  
-actions/      → Server-side logic  
-lib/          → Utilities & integrations  
-models/       → Database schemas  
-hooks/        → Custom React hooks  
+    app/          → Routes & UI
+    components/   → Reusable UI components
+    actions/      → Server-side logic
+    lib/          → Utilities & integrations
+    models/       → Database schemas
+    hooks/        → Custom React hooks
 
+---
 
 ## Team Members
 
@@ -128,6 +249,7 @@ hooks/        → Custom React hooks
 - Palak Pandey  
 - Shivanand Mishra  
 
+---
 
 ## Individual Contributions
 
@@ -158,6 +280,7 @@ hooks/        → Custom React hooks
 - Identified and fixed bugs  
 - Prepared project documentation  
 
+---
 
 ## Future Enhancements
 
