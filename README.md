@@ -84,21 +84,21 @@ NODE_ENV=development
 NEXT_PUBLIC_BASE_URL=http://localhost:3000  
 
 
-# APIs  
+### APIs  
 NEXT_PUBLIC_FINNHUB_API_KEY=  
 GEMINI_API_KEY=  
 
 
-# Database  
+### Database  
 MONGODB_URI=  
 
 
-# Auth  
+### Auth  
 BETTER_AUTH_SECRET=  
 BETTER_AUTH_URL=http://localhost:3000  
 
 
-# Email  
+### Email  
 NODEMAILER_EMAIL=  
 NODEMAILER_PASSWORD=  
 
@@ -120,12 +120,48 @@ models/       → Database schemas
 hooks/        → Custom React hooks  
 
 
+## Team Members
+
+- Aarul Kumar  
+- Sanvi Tikariha  
+- Shivani Chaurasiya  
+- Palak Pandey  
+- Shivanand Mishra  
+
+
+## Individual Contributions
+
+### 1. Aarul Kumar — Project Lead & Backend Development
+- Designed overall project architecture  
+- Integrated APIs for real-time stock data  
+- Managed GitHub repository  
+- Coordinated team development activities  
+
+### 2. Sanvi Tikariha — Frontend Development
+- Developed frontend using Next.js and React  
+- Designed responsive layouts  
+- Implemented stock search functionality  
+- Integrated frontend with backend APIs  
+
+### 3. Shivani Chaurasiya — UI/UX Design
+- Designed layout and styling of application  
+- Created reusable UI components  
+- Improved visual design and responsiveness  
+
+### 4. Palak Pandey — Data Handling
+- Assisted in data organization and handling  
+- Managed display of stock-related data  
+- Helped in debugging data-related issues  
+
+### 5. Shivanand Mishra — Testing & Documentation
+- Performed system testing  
+- Identified and fixed bugs  
+- Prepared project documentation  
+
+
 ## Future Enhancements
 
 - Portfolio tracking system  
 - Predictive AI signals  
 - Mobile-first UI  
 - Multi-market support (crypto, forex)
-
-
-It is ideal for learning and showcasing production-level development skills.
