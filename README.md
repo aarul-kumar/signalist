@@ -22,7 +22,8 @@ It continuously analyzes market activity and delivers context-aware alerts and A
 
 ## System Architecture
 
-![System Architecture](https://github.com/aarul-kumar/signalist/tree/main/middleware)
+<img width="456" height="737" alt="Blank diagram" src="https://github.com/user-attachments/assets/3efe3d35-72eb-47fc-8210-bad5a0bc9e6f" />
+
 
 ---
 
