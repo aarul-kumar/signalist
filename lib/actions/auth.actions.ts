@@ -14,9 +14,7 @@ export const signUpWithEmail = async ({
   preferredIndustry,
 }: SignUpFormData) => {
   try {
-    const authInstance = await auth; // ✅ FIX
-
-    const response = await authInstance.api.signUpEmail({
+    const response = await auth.api.signUpEmail({
       body: { email, password, name: fullName },
     });
 
@@ -43,11 +41,7 @@ export const signUpWithEmail = async ({
 
 export const signInWithEmail = async ({ email, password }: SignInFormData) => {
   try {
-    const authInstance = await auth; // ✅ FIX
-
-    const response = await authInstance.api.signInEmail({
-      body: { email, password },
-    });
+    const response = await auth.api.signInEmail({ body: { email, password } });
 
     return { success: true, data: response };
   } catch (e) {
@@ -58,11 +52,7 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
 
 export const signOut = async () => {
   try {
-    const authInstance = await auth; // ✅ FIX
-
-    await authInstance.api.signOut({
-      headers: await headers(),
-    });
+    await auth.api.signOut({ headers: await headers() });
   } catch (e) {
     console.log("Sign out failed", e);
     return { success: false, error: "Sign out failed" };

@@ -5,11 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const authInstance = await auth; // ✅ FIX
-
-  const session = await authInstance.api.getSession({
-    headers: await headers(),
-  });
+  const session = await auth.api.getSession({ headers: await headers() });
 
   if (session?.user) redirect("/");
 
@@ -68,5 +64,4 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     </main>
   );
 };
-
 export default Layout;

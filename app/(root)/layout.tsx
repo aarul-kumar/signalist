@@ -4,11 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const authInstance = await auth; // ✅ FIX
-
-  const session = await authInstance.api.getSession({
-    headers: await headers(),
-  });
+  const session = await auth.api.getSession({ headers: await headers() });
 
   if (!session?.user) redirect("/sign-in");
 
@@ -21,9 +17,9 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="min-h-screen text-gray-400">
       <Header user={user} />
+
       <div className="container py-10">{children}</div>
     </main>
   );
 };
-
 export default Layout;

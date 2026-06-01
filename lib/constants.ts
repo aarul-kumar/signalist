@@ -1,8 +1,10 @@
 export const NAV_ITEMS = [
   { href: "/", label: "Dashboard" },
   { href: "/search", label: "Search" },
-  // { href: '/watchlist', label: 'Watchlist' },
+  { href: "/watchlist", label: "Watchlist" },
 ];
+
+export const DEFAULT_AVATAR_URL = "/assets/icons/default-avatar.webp";
 
 // Sign-up form select options
 export const INVESTMENT_GOALS = [
