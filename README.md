@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Signalist — Intelligent Stock Monitoring Platform
 
-## Getting Started
+AI-powered modern stock market app built with Next.js, Shadcn, Better Auth, and Inngest! Track real-time prices, set personalized alerts, explore company insights, and manage watchlists. Signalist goes beyond basic tracking by continuously analyzing market activity and delivering context-aware alerts and AI-driven summaries to help users make smarter decisions.
 
-First, run the development server:
+## Key Features
 
+* **Stock Dashboard:** Track real-time stock prices with interactive line and candlestick charts, view historical data, and filter by industry, performance, or market cap.
+* **AI Insight Engine:** Generate personalized market summaries, daily digests, earnings breakdowns, and sentiment analysis powered by Gemini.
+* **Smart Alerts & Watchlist:** Create personalized watchlists and set custom price or volume triggers.
+* **Real-Time Workflows:** Automate event-driven processes like price updates, scheduling, and insights via Inngest—without relying on constant polling.
+* **Company Insights:** Explore detailed financial metrics (PE ratio, EPS, revenue), recent news, filings, and analyst ratings.
+* **Admin Analytics:** Manage stocks, publish news, and monitor user behavior and engagement metrics.
+
+## Try Signalist live
+https://signalist-t0i3.onrender.com
+
+**Email:** user@gmail.com
+
+**Password:** demouser
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | Next.js, Tailwind CSS, Shadcn UI |
+| **Backend** | Next.js API Routes, Server Actions |
+| **Authentication** | Better Auth |
+| **Database** | MongoDB |
+| **Event Processing** | Inngest |
+| **AI Integration** | Gemini API |
+| **Market Data** | Finnhub API |
+| **Email Service** | Nodemailer |
+| **Language** | TypeScript |
+
+---
+
+## System Architecture & Implementation
+
+Signalist follows a robust, highly scalable architecture designed for real-time responsiveness and maintainability.
+
+* **Hybrid Full-Stack Design:** Utilizes **Next.js** Server Components for efficient data fetching and rendering, combined with Server Actions to securely handle backend logic. This separation significantly reduces API overhead and improves performance.
+* **Event-Driven Workflow:** Instead of traditional polling, stock updates and alerts trigger background workflows via **Inngest**. This asynchronous event model offers low latency, highly efficient resource usage, and built-in retry and failure handling.
+* **Data Flow Pipeline:** User UI Interaction → Next.js Actions/API Routes → Finnhub API → MongoDB → Inngest Events → Gemini AI Summaries → Nodemailer Alerts.
+* **AI Integration (Gemini):** An automated pipeline that transforms raw financial data into structured insights, generating context-aware summaries, analyzing earnings, and providing market sentiment directly to the UI.
+* **Authentication & Security:** Powered by **Better Auth**, featuring secure session handling, protected server-side operations, and strict environment-based configuration.
+
+<img width="400" height="600" alt="Blank diagram" src="https://github.com/user-attachments/assets/2e73bbb6-50f1-4ae2-8c81-ed0515cc625a" />
+
+
+### Database Design (MongoDB)
+A document-based, flexible schema optimized with indexed queries for fast performance and strong separation of concerns:
+* `users` → Authentication and user preferences
+* `watchlists` → Tracked stocks and portfolios
+* `alerts` → Custom trigger conditions
+* `stocks` → Cached market data
+* `notifications` → Alert history and logs
+
+### Engineering Standards
+* **Performance Optimizations:** Server-side rendering (SSR), API response caching, optimized database queries, and lazy loading.
+* **Reliability & Scalability:** A stateless backend design built on decoupled services, featuring centralized error handling, graceful UI fallbacks, and comprehensive logging.
+* **Code Quality:** Built strictly with **TypeScript** for type safety, utilizing a modular structure with reusable components and a clean separation of concerns.
+---
+
+## Project Structure
+
+| Directory | Purpose |
+| :--- | :--- |
+| `app/` | Application routes and core UI |
+| `components/` | Reusable React/Shadcn UI components |
+| `actions/` | Next.js server-side logic and database queries |
+| `lib/` | Utility functions and third-party integrations |
+| `models/` | MongoDB database schemas |
+| `hooks/` | Custom React hooks for client-side state |
+
+---
+
+## Quick Start
+
+**Prerequisites:** Ensure you have Git, Node.js, and npm installed on your machine.
+
+**1. Clone the repository:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/aarul-kumar/signalist.git
+cd signalist
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**2. Install dependencies:**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**3. Set up environment variables:**
+Create a .env file in the root directory and add your secret keys. (Get these from MongoDB, Gemini, Finnhub, and your email provider).
+```bash
+npm install
+NODE_ENV=development
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# FINNHUB
+NEXT_PUBLIC_FINNHUB_API_KEY=your_finnhub_key
+FINNHUB_BASE_URL=[https://finnhub.io/api/v1](https://finnhub.io/api/v1)
 
-## Learn More
+# MONGODB
+MONGODB_URI=your_mongodb_connection_string
 
-To learn more about Next.js, take a look at the following resources:
+# BETTER AUTH
+BETTER_AUTH_SECRET=your_generated_secret
+BETTER_AUTH_URL=http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# GEMINI
+GEMINI_API_KEY=your_gemini_key
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# NODEMAILER
+NODEMAILER_EMAIL=your_email@example.com
+NODEMAILER_PASSWORD=your_app_password
+```
+**4. Run the application:**
+```bash
+You will need two terminal windows to run the web server and the event processor simultaneously.
+# Terminal 1: Start the Next.js development server
+npm run dev
 
-## Deploy on Vercel
+# Terminal 2: Start the Inngest local development server
+npx inngest-cli@latest dev
+```
+Open http://localhost:3000 in your browser to view the project.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Team & Contributions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Member | Role & Contributions |
+| :--- | :--- |
+| **Aarul Kumar** | **Project Lead & Backend:** Designed system architecture, integrated real-time APIs, and managed the repository. |
+| **Sanvi Tikariha** | **Frontend Development:** Built the React UI, responsive layouts, search functionality, and API connections. |
+| **Shivani Chaurasiya** | **UI/UX Design:** Designed the application layout, created reusable components, and ensured responsiveness. |
+| **Palak Pandey** | **Data Handling:** Managed the organization and display of stock data, and debugged data flow issues. |
+| **Shivanand Mishra** | **Testing & Documentation:** Performed system testing, identified bugs, and prepared project documentation. |
+
+---
+
+## Future Enhancements
+
+* Portfolio tracking system
+* Predictive AI trading signals
+* Mobile-first tailored UI
+* Multi-market support (Cryptocurrency, Forex)
