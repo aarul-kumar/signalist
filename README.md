@@ -12,7 +12,7 @@ AI-powered modern stock market app built with Next.js, Shadcn, Better Auth, and 
 * **Admin Analytics:** Manage stocks, publish news, and monitor user behavior and engagement metrics.
 
 ## Try Signalist live
-https://signalist-t0i3.onrender.com
+https://signalist-z1ky.onrender.com
 
 **Email:** user@gmail.com
 
